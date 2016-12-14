@@ -1,0 +1,8 @@
+SevenDayForecast seven day forecast
+SevenDayForecast forecast for the next seven days
+SevenDayForecast long term forecast
+TodaysForecast the forecast
+TodaysForecast todays forecast
+TodaysForecast forecast for today
+TomorrowsForecast tomorrows forecast
+TomorrowsForecast forecast for tomorrow

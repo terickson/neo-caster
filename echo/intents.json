@@ -1,0 +1,13 @@
+{
+  "intents": [
+  {
+    "intent": "SevenDayForecast"
+  },
+  {
+    "intent": "TodaysForecast"
+  },
+  {
+    "intent": "TomorrowsForecast"
+  }
+ ]
+}

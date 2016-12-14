@@ -1,0 +1,47 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "classic",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "declaration": true,
+        "sourceMap": true,
+        "target": "es5"
+    },
+    "filesGlob": [
+        "./src/**/*.ts",
+        "./typings/**/*.d.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./src/lambda.ts",
+        "./src/routes/alexa.ts",
+        "./src/routes/index.ts",
+        "./src/run.ts",
+        "./src/services/alexaService.ts",
+        "./src/services/logger.ts",
+        "./src/services/loggerSettings.ts",
+        "./src/services/requestService.ts",
+        "./typings/bluebird/bluebird.d.ts",
+        "./typings/body-parser/body-parser.d.ts",
+        "./typings/cookie-parser/cookie-parser.d.ts",
+        "./typings/debug/debug.d.ts",
+        "./typings/express/express.d.ts",
+        "./typings/form-data/form-data.d.ts",
+        "./typings/mime/mime.d.ts",
+        "./typings/moment-timezone/moment-timezone.d.ts",
+        "./typings/moment/moment-node.d.ts",
+        "./typings/moment/moment.d.ts",
+        "./typings/mongoose/mongoose.d.ts",
+        "./typings/morgan/morgan.d.ts",
+        "./typings/node/node.d.ts",
+        "./typings/request-promise/request-promise.d.ts",
+        "./typings/request/request.d.ts",
+        "./typings/serve-static/serve-static.d.ts",
+        "./typings/winston/winston.d.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    },
+    "compileOnSave": false
+}
