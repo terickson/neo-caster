@@ -15,9 +15,6 @@
     ],
     "files": [
         "./src/lambda.ts",
-        "./src/routes/alexa.ts",
-        "./src/routes/index.ts",
-        "./src/run.ts",
         "./src/services/alexaService.ts",
         "./src/services/logger.ts",
         "./src/services/loggerSettings.ts",
