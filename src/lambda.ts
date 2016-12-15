@@ -15,14 +15,17 @@ const phrases = {stop: "GoodBy", help: "You can ask me for todays, tomorrows, or
 const APP_ID:any = process.env.ALEXA_SKILL_ID;
 
 const handlers = {
+    'LaunchRequest': function () {
+        lambaForecast("todays forecast", 0, 0, this);
+    },
     'SevenDayForecast': function () {
-        lambaForecast(0, 7, this);
+        lambaForecast("the seven day forecast", 0, 7, this);
     },
     'TodaysForecast': function () {
-        lambaForecast(0, 0, this);
+        lambaForecast("todays forecast",0, 0, this);
     },
     'TomorrowsForecast': function () {
-        lambaForecast(1, 1, this);
+        lambaForecast("tomorrows forecast",1, 1, this);
     },
     'AMAZON.HelpIntent': function () {
         this.emit(':tell', phrases.help);

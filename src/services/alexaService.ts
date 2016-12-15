@@ -1,7 +1,7 @@
 import {logger} from './logger';
 import {makeRequest} from './requestService';
 
-export function lambaForecast(startDay:number, endDay:number, lambda:any){
+export function lambaForecast(forecastName:string, startDay:number, endDay:number, lambda:any){
   let errorResponse = "I'm currently having difficulty getting the information back from Nasa please try again later.";
   let requestUrl = "https://api.nasa.gov/neo/rest/v1/feed?detailed=false&api_key=5oVZUnKbJjyQpLTYuvAG419q9tjNVZppcIJwSI5b";
   requestUrl += "&start_date=" + getFormatedDate(startDay);
@@ -12,7 +12,7 @@ export function lambaForecast(startDay:number, endDay:number, lambda:any){
   }
   let successFunction = function error(forecastResponse:any){
     try{
-      lambda.emit(':tell', interpretForcast(forecastResponse, errorResponse));
+      lambda.emit(':tell', interpretForcast(forecastName, forecastResponse, errorResponse));
     }catch(err){
       logger.error(err);
       lambda.emit(':tell', errorResponse);
@@ -38,7 +38,7 @@ function niceDate(nasaDate:string){
   return months[parseInt(nasaDateArray[1]) - 1] + " " + parseInt(nasaDateArray[2]);
 }
 
-function interpretForcast(forecastResponse:any, errorResponse:string){
+function interpretForcast(forecastName:string, forecastResponse:any, errorResponse:string){
   if(forecastResponse.statusCode != 200){
     return errorResponse;
   }
@@ -49,7 +49,7 @@ function interpretForcast(forecastResponse:any, errorResponse:string){
 
   let neoCount = foreCastData.element_count;
   if(neoCount < 1){
-    return "No need to worry, it looks like there are no neos in this forcast.";
+    return "No need to worry, it looks like there are no neos in " + forecastName + ".";
   }
   let hazardous:any[] = [];
   for(let i in foreCastData.near_earth_objects){
@@ -63,9 +63,9 @@ function interpretForcast(forecastResponse:any, errorResponse:string){
     }
   }
   if(hazardous.length < 1){
-    return "No need to worry, there are " + neoCount + " neos in the forecast but none of them are hazardous.";
+    return "No need to worry, there are " + neoCount + " neos in " + forecastName + " but none of them are hazardous.";
   }
-  let forecastMessage = "So it looks like there are " + neoCount + " neos in the forecast and " + hazardous.length + " we should keep an eye on. ";
+  let forecastMessage = "So it looks like there are " + neoCount + " neos in " + forecastName + " and " + hazardous.length + " we should keep an eye on. ";
 
   for(let j = 0; j < hazardous.length; ++j){
     if(j > 0){

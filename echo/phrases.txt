@@ -1,3 +1,4 @@
+SevenDayForecast a seven day forecast
 SevenDayForecast seven day forecast
 SevenDayForecast forecast for the next seven days
 SevenDayForecast long term forecast
